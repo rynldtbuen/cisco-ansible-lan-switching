@@ -1,0 +1,24 @@
+---
+- include: sync-vlan.yml
+
+- name: snyc vlans
+  hosts: dist
+  gather_facts: no
+  connection: local
+  serial: 1
+
+  tasks:
+
+    - include: ntc_show/sh_vlan.yml
+
+    - include: ntc_show/sh_interface.yml
+
+    - set_fact: active_vlan_id="{{ show_vlan.response|map(attribute='vlan_id')|reject('match', '1001')|reject('match', '1002')|reject('match', '1003')|reject('match', '1004')|reject('match', '1004')|reject('match', '1005')|list }}"
+
+    - set_fact: vlan_interface="{{ show_interface.response|selectattr('interface', 'match', '^Vlan')|map(attribute='interface')|list|replace('Vlan', '') }}"
+
+    - set_fact: difference_03="{{ vlan_interface|difference(active_vlan_id) }}"
+
+    - name: sync vlan interface
+      ios_config:
+        src: templates/sync-vlan-int.j2

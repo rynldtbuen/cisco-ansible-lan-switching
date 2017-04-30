@@ -1,0 +1,11 @@
+[dist]
+dist-sw01 ansible_hostname=dist-sw01
+dist-sw02 ansible_hostname=dist-sw02
+
+[acc]
+acc-sw01 ansible_hostname=acc-sw01
+acc-sw02 ansible_hostname=acc-sw02
+
+[switches:children]
+dist
+acc

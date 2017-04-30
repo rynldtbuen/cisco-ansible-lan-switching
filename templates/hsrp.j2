@@ -1,0 +1,11 @@
+{% for key,value in vlans|dictsort if value.subnet is defined and value.root is defined %}
+{% set net_id = value.subnet|regex_replace('(.*\.)(.*)$', '\\1') %}
+interface vlan{{ value.id }}
+  standby version 2
+  standby 1 ip {{ net_id }}{{ hsrp_vip|default('254') }}
+  {% if value.root == ansible_hostname %}                                                                                                                                                                                                                                                        }
+  standby 1 preempt delay minimum 300
+  standby 1 priority 110
+  {% endif -%}
+  standby 1 timers msec 500 msec 750
+{% endfor %}

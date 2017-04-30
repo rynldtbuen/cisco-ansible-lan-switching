@@ -1,0 +1,19 @@
+---
+- name: global config
+  hosts: dist-sw01
+  gather_facts: no
+  connection: local
+  serial: 1
+
+  tasks:
+
+  - local_action: file path=configs/{{ ansible_hostname }} state=directory
+    run_once: true
+
+  - local_action: file path=configs/{{ ansible_hostname }}/{{ item }}.txt state=absent
+    with_items:
+      - interface
+
+  - template: src='templates/{{ item }}.j2' dest='configs/{{ ansible_hostname }}/{{ item }}.txt'
+    with_items:
+      - interface

@@ -1,0 +1,33 @@
+interface vlan30
+  standby version 2
+  standby 1 ip 10.1.30.254
+                                                                                                                                                                                                                                                          }
+  standby 1 preempt delay minimum 300
+  standby 1 priority 110
+  standby 1 timers msec 500 msec 750
+interface vlan50
+  standby version 2
+  standby 1 ip 10.1.50.254
+  standby 1 timers msec 500 msec 750
+interface vlan31
+  standby version 2
+  standby 1 ip 10.1.31.254
+                                                                                                                                                                                                                                                          }
+  standby 1 preempt delay minimum 300
+  standby 1 priority 110
+  standby 1 timers msec 500 msec 750
+interface vlan51
+  standby version 2
+  standby 1 ip 10.1.51.254
+  standby 1 timers msec 500 msec 750
+interface vlan10
+  standby version 2
+  standby 1 ip 10.1.10.254
+                                                                                                                                                                                                                                                          }
+  standby 1 preempt delay minimum 300
+  standby 1 priority 110
+  standby 1 timers msec 500 msec 750
+interface vlan11
+  standby version 2
+  standby 1 ip 10.1.11.254
+  standby 1 timers msec 500 msec 750

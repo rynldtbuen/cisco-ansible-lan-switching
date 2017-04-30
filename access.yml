@@ -1,0 +1,33 @@
+---
+- name: access switch configs
+  hosts: acc
+  gather_facts: no
+  connection: local
+  serial: 1
+
+  tasks:
+
+    - name: vlans config
+      ios_config:
+        src: templates/vlan.j2
+      tags: vlan
+
+    - name: spanning-tree config
+      ios_config:
+        src: stp.j2
+      tags: stp
+
+    - name: default interface config
+      ios_config:
+        src: default-interface.j2
+      tags: default-interface
+
+    - name: access port config
+      ios_config:
+        src: templates/access-ports.j2
+      tags: access-port
+
+    - name: trunk port config
+      ios_config:
+        src: trunk-ports.j2
+      tags: trunk-ports

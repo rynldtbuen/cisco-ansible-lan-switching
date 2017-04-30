@@ -1,0 +1,16 @@
+---
+# Specify a range or individual port to be trunk or access.
+# If you wanted to implement port-channel, just add the 'group' attribute
+# in the list of dictionaries.
+trunk_ports:
+  - { group: 1, ports: ['Gi0/0', 'Gi0/1'], description: -> acc-sw01 }
+  - { group: 2, ports: ['Gi0/2', 'Gi0/3'], description: -> acc-sw02 }
+
+svi_id: 1
+
+interfaces:
+  Gi1/0: { ip: 172.168.1.20, routed: true, description: -> dist-sw02 }
+#  Po40: { ip: 172.16.100.1/30, routed: true, ports: ['Gi1/0', 'Gi1/1'] }
+
+loopbacks:
+  lo0: { ip: 10.250.0.20/32 }

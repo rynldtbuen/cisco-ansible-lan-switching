@@ -1,0 +1,17 @@
+interface range Gi1/0 - 1
+  switchport mode access
+  switchport access vlan 30
+  switchport voice vlan 10
+  no shutdown
+interface Gi2/0
+  switchport mode access
+  switchport access vlan 30
+  switchport voice vlan 10
+  no shutdown
+
+interface range Gi1/2 - 3
+  switchport mode access
+  switchport access vlan 31
+  switchport voice vlan 10
+  no shutdown
+

@@ -1,0 +1,40 @@
+---
+- name: distribution switch configs
+  hosts: dist
+  gather_facts: no
+  connection: local
+  serial: 1
+
+  tasks:
+
+# lan switching
+    - name: vlans config
+      ios_config:
+        src: templates/vlan.j2
+      tags: vlan
+
+    - name: spanning-tree config
+      ios_config:
+        src: stp.j2
+      tags: stp
+
+    - name: default interface config
+      ios_config:
+        src: default-interface.j2
+      tags: default-interface
+
+    - name: trunk port config
+      ios_config:
+        src: trunk-ports.j2
+      tags: trunk-ports
+
+# interfaces
+    - name: switch vlan interface config
+      ios_config:
+        src: svi.j2
+      tags: svi
+
+    - name: interface config
+      ios_config:
+        src: interface.j2
+      tags: interface

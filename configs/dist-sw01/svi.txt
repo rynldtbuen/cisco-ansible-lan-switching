@@ -1,0 +1,30 @@
+interface vlan30
+  ip address 10.1.30.1 255.255.255.0
+  delay 150
+  bandwidth 10000
+  no shutdown
+interface vlan50
+  ip address 10.1.50.1 255.255.255.0
+  delay 150
+  bandwidth 10000
+  no shutdown
+interface vlan31
+  ip address 10.1.31.1 255.255.255.0
+  delay 150
+  bandwidth 10000
+  no shutdown
+interface vlan51
+  ip address 10.1.51.1 255.255.255.0
+  delay 150
+  bandwidth 10000
+  no shutdown
+interface vlan10
+  ip address 10.1.10.1 255.255.255.0
+  delay 150
+  bandwidth 10000
+  no shutdown
+interface vlan11
+  ip address 10.1.11.1 255.255.255.0
+  delay 150
+  bandwidth 10000
+  no shutdown

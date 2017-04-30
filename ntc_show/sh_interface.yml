@@ -1,0 +1,11 @@
+---
+- name: show interface
+  ntc_show_command:
+    connection: ssh
+    platform: cisco_ios
+    template_dir: "/home/rynld/ntc-ansible/ntc-templates/templates/"
+    command: show interface
+    host: "{{ ansible_hostname }}"
+    username: "{{ ntc.user }}"
+    password: "{{ ntc.pass }}"
+  register: show_interface

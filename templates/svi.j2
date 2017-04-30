@@ -1,0 +1,12 @@
+{% for key,value in vlans|dictsort if value.subnet is defined %}
+interface vlan{{ value.id }}
+{% set net_id = value.subnet|regex_replace('(.*\.)(.*)$', '\\1') %}
+{% set mask = value.subnet|ipaddr('netmask') %}
+  {% if value.description is defined -%}
+  description {{ value.description }}
+  {% endif -%}
+  ip address {{ net_id }}{{ svi_id }} {{ mask }}
+  delay 150
+  bandwidth 10000
+  no shutdown
+{% endfor %}

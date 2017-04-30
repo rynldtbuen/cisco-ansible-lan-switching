@@ -1,0 +1,10 @@
+spanning-tree mode rapid-pvst
+spanning-tree portfast edge default
+spanning-tree portfast edge bpduguard default
+{% for key,value in vlans|dictsort if 'dist' in group_names %}
+{% if value.root is defined and value.root == ansible_hostname %}
+spanning-tree vlan {{ value.id }} priority 4096
+{% else %}
+spanning-tree vlan {{ value.id }} priority 8192
+{% endif %}
+{% endfor %}

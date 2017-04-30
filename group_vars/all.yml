@@ -1,0 +1,10 @@
+---
+ntc:
+  host: "{{ ansible_hostname }}"
+  user: rey
+  pass: cisco
+
+tftp_server: 10.0.0.1
+
+ansible_user: rey
+ansible_ssh_pass: cisco

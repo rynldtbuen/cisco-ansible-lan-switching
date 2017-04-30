@@ -1,0 +1,24 @@
+{% for key,value in interfaces|dictsort + loopbacks|dictsort %}
+interface {{ key }}
+  {% if value.routed is defined -%}
+  no switchport
+  {% endif -%}
+  {% if value.ip != 'dhcp' -%}
+  ip address {{ value.ip|ipaddr('address') }} {{ value.ip|ipaddr('netmask') }}
+  {% else -%}
+  ip address dhcp
+  {% endif -%}
+  no shutdown
+{% endfor %}
+
+{% for key,value in interfaces|dictsort if value.ports is defined %}
+{% for ports in value.ports %}
+interface {{ ports }}
+  no ip address
+  {% if value.routed is defined -%}
+  no switchport
+  {% endif -%}
+  no shutdown
+  channel-group  {{ key|replace('Po', '') }} mode on
+{% endfor %}
+{% endfor %}

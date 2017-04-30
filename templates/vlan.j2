@@ -1,0 +1,4 @@
+{% for key,value in vlans|dictsort %}
+vlan {{ value.id }}
+  name {{ key }}
+{% endfor %}

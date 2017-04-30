@@ -1,0 +1,4 @@
+---
+vlan_02:
+  native: { id: '1000', root: dist-sw01 }
+  default: { id: '1' }
